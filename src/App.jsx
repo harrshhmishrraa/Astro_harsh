@@ -24,6 +24,7 @@ import {
   WhatsApp,
 } from '@mui/icons-material';
 import heroImage from '../image.png';
+import logoImage from './assets/logo.jpeg';
 
 const navLinks = ['Home', 'About', 'Consultation', 'Shop', 'Testimonials', 'Contact'];
 
@@ -203,11 +204,11 @@ function Header({ onBook }) {
           className="flex items-center gap-3 text-left"
           aria-label="Go to home"
         >
-          <span className="grid h-10 w-10 place-items-center rounded-full border border-amber-300/60 bg-amber-300/10 text-amber-200 sm:h-11 sm:w-11">
-            <AutoAwesome fontSize="small" />
+          <span className="grid h-12 w-12 place-items-center overflow-hidden rounded-full border border-amber-300/60 bg-amber-300/10 sm:h-14 sm:w-14">
+            <img src={logoImage} alt="Vedaksham Logo" className="h-full w-full object-cover" />
           </span>
           <span>
-            <span className="block text-base font-bold text-white sm:text-lg">Acharya Ji</span>
+            <span className="block text-base font-bold text-white sm:text-lg">Vedaksham</span>
             <span className="block text-[0.65rem] uppercase tracking-[0.18em] text-amber-200 sm:text-xs sm:tracking-[0.2em]">Vedic Astrology</span>
           </span>
         </button>
@@ -359,7 +360,7 @@ function Hero({ onBook }) {
               <div className="rounded-2xl border border-white/15 bg-slate-950/68 p-4 backdrop-blur-md sm:p-5 lg:bg-slate-950/58">
                 <p className="text-[0.68rem] font-semibold uppercase tracking-[0.18em] text-amber-200 sm:text-sm sm:tracking-[0.2em]">Luxury Spiritual Platform</p>
                 <p className="mt-2 text-sm font-semibold leading-6 text-white sm:text-base">
-                  Private horoscope, relationship and career guidance from Acharya Ji.
+                  Private horoscope, relationship and career guidance from Acharya Ankit Dixit Ji.
                 </p>
               </div>
             </div>
@@ -416,13 +417,13 @@ function About({ onBook }) {
           <p className="mb-3 text-sm font-semibold uppercase tracking-[0.24em] text-amber-300">About Acharya Ji</p>
           <h2 className="text-3xl font-bold text-white md:text-5xl">Guidance rooted in Vedic wisdom and practical remedies.</h2>
           <p className="mt-6 text-lg leading-8 text-slate-300">
-            Acharya Dev Sharma brings more than 22 years of astrology practice, combining classical Jyotish principles with clear, compassionate consultation. His work focuses on helping people make confident choices in marriage, career, finance, health and spiritual growth.
+            Acharya Ankit Dixit ji brings more than 8 years of astrology practice, combining classical Jyotish principles and many Occult sciences with clear, compassionate consultation. His work focuses on helping people make confident choices in marriage, career, finance, health and spiritual growth.
           </p>
           <div className="mt-8 grid grid-cols-1 gap-2 min-[420px]:grid-cols-3 sm:gap-4">
             {[
-              ['22+', 'Years Experience'],
-              ['18k+', 'Consultations'],
-              ['6', 'Specializations'],
+              ['8+', 'Years Experience'],
+              ['5k+', 'Consultations'],
+              ['6+', 'Specializations'],
             ].map(([value, label]) => (
               <div key={label} className="flex items-center justify-between rounded-xl border border-white/10 bg-white/[0.06] px-4 py-3 min-[420px]:block min-[420px]:px-2 min-[420px]:text-center sm:rounded-2xl sm:p-5 sm:text-left">
                 <p className="shrink-0 text-2xl font-black leading-none text-amber-200 min-[420px]:text-xl sm:text-3xl">{value}</p>
