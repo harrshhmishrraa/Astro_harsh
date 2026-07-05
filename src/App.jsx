@@ -798,9 +798,9 @@ function Contact() {
       <div className="mx-auto grid max-w-7xl gap-6 lg:grid-cols-[0.85fr_1.15fr]">
         <div className="rounded-3xl border border-white/10 bg-white/[0.055] p-7">
           {[
-            [<LocationOn />, 'Address', 'Astro Shakti Kendra, Civil Lines, New Delhi'],
-            [<Call />, 'Phone', '+91 9026259937'],
-            [<WhatsApp />, 'WhatsApp', '+91 9026259937'],
+            [<LocationOn />, 'Address', 'Shree Vedaksham foundation,Kanpur Nagar'],
+            [<Call />, 'Phone', '+91 6393080345'],
+            [<WhatsApp />, 'WhatsApp', '+91 7408179186'],
             [<Email />, 'Email', 'astroankitdixix@gmail.com'],
           ].map(([icon, label, value]) => (
             <div key={label} className="mb-6 flex gap-4 last:mb-0">
