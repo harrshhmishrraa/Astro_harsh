@@ -5,6 +5,7 @@ import {
   BusinessCenter,
   Call,
   Close,
+  ContentCopy,
   Diamond,
   Email,
   ExpandMore,
@@ -23,10 +24,10 @@ import {
   Star,
   WhatsApp,
 } from '@mui/icons-material';
-import heroImage from '../image.png';
+import heroImage from './assets/hero-ankit.jpg';
 import logoImage from './assets/logo.jpeg';
 
-const navLinks = ['Home', 'About', 'Consultation', 'Shop', 'Testimonials', 'Contact'];
+const navLinks = ['Home', 'About', 'Consultation', 'Shop', 'Testimonials', 'Donation', 'Contact'];
 
 const heroSlides = [
   {
@@ -346,23 +347,23 @@ function Hero({ onBook }) {
 
         <div className="relative z-10 order-1 mx-auto w-full max-w-[34rem] lg:order-2 lg:max-w-none">
           <div className="absolute -inset-3 rounded-[1.5rem] bg-amber-300/15 blur-2xl sm:-inset-5 sm:rounded-[2rem] sm:blur-3xl" />
-          <div className="relative overflow-hidden rounded-[1.35rem] border border-white/15 bg-white/10 p-1.5 shadow-2xl shadow-slate-950/60 sm:rounded-[1.6rem] sm:p-2">
+          <div className="relative overflow-hidden w-full">
             <img
               src={heroImage}
               alt="Culture Astrology premium banner reference"
-              className="hero-banner-image aspect-[10/9] w-full rounded-[1rem] object-cover sm:aspect-[4/3] sm:rounded-[1.15rem] lg:aspect-[4/3]"
+              className="hero-banner-image hero-image-blend aspect-[10/9] w-full object-cover sm:aspect-[4/3] lg:aspect-[4/3]"
             />
-            <div className="absolute inset-1.5 rounded-[1rem] bg-gradient-to-t from-slate-950/92 via-slate-950/18 to-transparent sm:inset-2 sm:rounded-[1.15rem]" />
+            <div className="absolute inset-0 bg-gradient-to-t from-slate-950/92 via-slate-950/18 to-transparent hero-image-blend" />
             <div className="absolute left-4 top-4 flex items-center gap-2 rounded-full border border-white/15 bg-slate-950/62 px-3 py-2 text-[0.68rem] font-bold uppercase tracking-[0.14em] text-amber-100 backdrop-blur sm:left-6 sm:top-6 sm:text-xs">
               <AutoAwesome fontSize="inherit" /> Live Guidance
             </div>
-            <div className="absolute inset-x-4 bottom-4 sm:inset-x-6 sm:bottom-6">
-              <div className="rounded-2xl border border-white/15 bg-slate-950/68 p-4 backdrop-blur-md sm:p-5 lg:bg-slate-950/58">
-                <p className="text-[0.68rem] font-semibold uppercase tracking-[0.18em] text-amber-200 sm:text-sm sm:tracking-[0.2em]">Luxury Spiritual Platform</p>
-                <p className="mt-2 text-sm font-semibold leading-6 text-white sm:text-base">
-                  Private horoscope, relationship and career guidance from Acharya Ankit Dixit Ji.
-                </p>
-              </div>
+            <div className="absolute left-4 bottom-4 right-4 border-l-2 border-amber-300/60 pl-4 sm:left-6 sm:bottom-6 sm:right-6 sm:pl-5">
+              <p className="text-[0.68rem] font-bold uppercase tracking-[0.22em] text-amber-300 sm:text-xs">
+                Luxury Spiritual Platform
+              </p>
+              <p className="mt-1.5 text-xs font-light leading-relaxed text-slate-200 sm:text-sm md:text-base">
+                Private horoscope, relationship and career guidance from <span className="font-semibold text-white">Acharya Ankit Dixit Ji</span>.
+              </p>
             </div>
           </div>
         </div>
@@ -958,8 +959,203 @@ function Footer() {
   );
 }
 
+const cowImages = [
+  '/assets/images/cow4.jpg',
+  '/assets/images/cow2.jpg',
+  '/assets/images/cow1.jpg',
+  '/assets/images/cow3.jpg',
+];
+
+function DonationModal({ open, onClose }) {
+  const [copied, setCopied] = useState(false);
+  if (!open) return null;
+
+  const upiId = 'vedaksham@upi';
+
+  const copyToClipboard = () => {
+    navigator.clipboard.writeText(upiId);
+    setCopied(true);
+    setTimeout(() => setCopied(false), 2000);
+  };
+
+  return (
+    <div className="fixed inset-0 z-[70] grid place-items-center bg-slate-950/80 px-4 py-8 backdrop-blur-sm" role="dialog" aria-modal="true">
+      <div className="max-h-[92vh] w-full max-w-md overflow-y-auto rounded-3xl border border-white/10 bg-slate-950 p-6 shadow-2xl">
+        <div className="mb-5 flex items-start justify-between">
+          <div>
+            <p className="text-sm font-semibold uppercase tracking-[0.22em] text-amber-300">Gau Gras Contribution</p>
+            <h2 className="mt-1 text-2xl font-bold text-white">Scan & Donate</h2>
+          </div>
+          <button type="button" onClick={onClose} className="grid h-10 w-10 place-items-center rounded-full border border-white/10 text-white" aria-label="Close donation details">
+            <Close />
+          </button>
+        </div>
+
+        <div className="flex flex-col items-center">
+          <div className="rounded-2xl border-2 border-amber-300/40 bg-white p-4 shadow-xl">
+            <img
+              src="https://api.qrserver.com/v1/create-qr-code/?size=220x220&data=upi://pay?pa=vedaksham@upi%26pn=Vedaksham%20Astrology%26am=500%26cu=INR"
+              alt="Donation UPI QR Code"
+              className="h-52 w-52 object-contain"
+            />
+          </div>
+          <p className="mt-3 text-xs text-slate-400">Scan QR using GPay, PhonePe, Paytm, or any UPI App</p>
+
+          <div className="mt-6 w-full rounded-2xl border border-white/10 bg-white/[0.04] p-4 text-center">
+            <p className="text-xs font-semibold uppercase tracking-[0.14em] text-amber-200">UPI ID for Transfer</p>
+            <div className="mt-2 flex items-center justify-between gap-3 rounded-xl bg-slate-900 px-4 py-2.5 border border-white/5">
+              <span className="font-mono text-sm font-semibold text-white truncate">{upiId}</span>
+              <button
+                type="button"
+                onClick={copyToClipboard}
+                className="flex items-center gap-1 text-xs font-bold text-amber-300 hover:text-amber-100 shrink-0"
+              >
+                <ContentCopy fontSize="inherit" />
+                {copied ? 'Copied' : 'Copy'}
+              </button>
+            </div>
+          </div>
+
+          <div className="mt-5 w-full rounded-2xl border border-white/10 bg-white/[0.04] p-4">
+            <p className="text-center text-xs font-semibold uppercase tracking-[0.14em] text-amber-200">Bank Transfer Details</p>
+            <div className="mt-3 text-xs space-y-2 text-slate-300">
+              <div className="flex justify-between border-b border-white/5 pb-1"><span className="text-slate-400">Bank Name</span><span className="font-medium text-white">HDFC Bank</span></div>
+              <div className="flex justify-between border-b border-white/5 pb-1"><span className="text-slate-400">Account Name</span><span className="font-medium text-white">Vedaksham Foundation</span></div>
+              <div className="flex justify-between border-b border-white/5 pb-1"><span className="text-slate-400">Account No.</span><span className="font-mono font-medium text-white">50200012345678</span></div>
+              <div className="flex justify-between"><span className="text-slate-400">IFSC Code</span><span className="font-mono font-medium text-white">HDFC0001234</span></div>
+            </div>
+          </div>
+
+          <a
+            href="https://wa.me/917408179186?text=I%20have%20contributed%20to%20Gau%20Sewa%20donation.%20Here%20is%20my%20screenshot."
+            target="_blank"
+            rel="noopener noreferrer"
+            className="mt-6 flex w-full items-center justify-center gap-2 rounded-full bg-emerald-500 py-3.5 text-sm font-bold text-white transition hover:bg-emerald-400"
+          >
+            <WhatsApp fontSize="small" /> Send Payment Screenshot
+          </a>
+        </div>
+      </div>
+    </div>
+  );
+}
+
+function Donation({ onDonate }) {
+  const galleryItems = [
+    {
+      src: '/assets/images/cow4.jpg',
+      title: 'Gau Gras Seva',
+      description: 'Acharya Ji preparing and feeding fresh green grass (Chara) to cows.',
+    },
+    {
+      src: '/assets/images/cow2.jpg',
+      title: 'Gaushala Cows',
+      description: 'Real photographs of healthy shelter cows in the daily care yard.',
+    },
+    {
+      src: '/assets/images/cow1.jpg',
+      title: '3D Sadhana Van Plan',
+      description: 'The 1-Bigha planning schema showing gaushala, meditation, and temple areas.',
+    },
+    {
+      src: '/assets/images/cow3_cropped.jpg',
+      title: 'Sacred Remedial Yajna',
+      description: 'Acharya Ji performing fire ritual remedies for planetary peace.',
+    },
+  ];
+
+  return (
+    <section id="donation" className="section-band px-5 py-24 lg:px-8">
+      <div className="mx-auto max-w-7xl">
+        {/* Title Area */}
+        <div className="mx-auto mb-16 max-w-3xl text-center">
+          <p className="mb-3 text-sm font-semibold uppercase tracking-[0.24em] text-amber-300">Spiritual Remedy & Charity</p>
+          <h2 className="text-3xl font-bold text-white md:text-5xl">Gau Gras & Cow Chara Donation</h2>
+          <blockquote className="mx-auto mt-6 max-w-2xl border-l-2 border-amber-300 pl-4 italic text-slate-300 leading-7 text-left inline-block">
+            "Serving the cow is serving the divine. In Vedic tradition, Gau Gras and Chara donation are powerful remedies for planetary relief and spiritual peace."
+          </blockquote>
+        </div>
+
+        {/* 4-Image Grid Gallery */}
+        <div className="grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-4 mb-16">
+          {galleryItems.map((item, index) => (
+            <article key={index} className="group rounded-3xl border border-white/10 bg-white/[0.045] p-3 transition hover:-translate-y-1 hover:border-amber-300/30 hover:bg-white/[0.07]">
+              <div className="relative overflow-hidden rounded-2xl bg-slate-950 aspect-[4/3] w-full flex items-center justify-center">
+                <img
+                  src={item.src}
+                  alt={item.title}
+                  className="h-full w-full object-contain transition duration-500 group-hover:scale-[1.03]"
+                />
+              </div>
+              <div className="p-4">
+                <h3 className="text-lg font-bold text-white group-hover:text-amber-200 transition">{item.title}</h3>
+                <p className="mt-2 text-xs leading-5 text-slate-300">{item.description}</p>
+              </div>
+            </article>
+          ))}
+        </div>
+
+        {/* Details and Action Row */}
+        <div className="grid gap-12 lg:grid-cols-[1.1fr_0.9fr] items-start pt-8 border-t border-white/5">
+          {/* Left Column: highlights list */}
+          <div className="grid gap-6 sm:grid-cols-3 lg:grid-cols-1">
+            <div className="flex gap-4">
+              <span className="grid h-11 w-11 shrink-0 place-items-center rounded-2xl bg-amber-300/15 text-amber-200"><Star fontSize="small" /></span>
+              <div>
+                <h3 className="font-bold text-white">Powerful Astrological Remedy</h3>
+                <p className="mt-1 text-sm text-slate-300 leading-6">Feeding cows green grass (Chara) helps pacify afflictions of Saturn (Shani), Rahu, Ketu, and Jupiter (Guru) in your birth chart.</p>
+              </div>
+            </div>
+            <div className="flex gap-4">
+              <span className="grid h-11 w-11 shrink-0 place-items-center rounded-2xl bg-amber-300/15 text-amber-200"><Spa fontSize="small" /></span>
+              <div>
+                <h3 className="font-bold text-white">Direct Feed Contribution</h3>
+                <p className="mt-1 text-sm text-slate-300 leading-6">All contributions go directly toward daily cow feed, fresh water, medical aid, and shelter maintenance for cows under our care.</p>
+              </div>
+            </div>
+            <div className="flex gap-4">
+              <span className="grid h-11 w-11 shrink-0 place-items-center rounded-2xl bg-amber-300/15 text-amber-200"><AutoAwesome fontSize="small" /></span>
+              <div>
+                <h3 className="font-bold text-white">Blessings of Kamadhenu</h3>
+                <p className="mt-1 text-sm text-slate-300 leading-6">Vedic scriptures describe that serving the cow invokes the divine blessings of Kamadhenu, attracting wealth, health, and family well-being.</p>
+              </div>
+            </div>
+          </div>
+
+          {/* Right Column: CTA Box */}
+          <div className="rounded-3xl border border-amber-300/20 bg-slate-900/40 p-6 md:p-8 text-center lg:text-left">
+            <h3 className="text-xl font-bold text-amber-200">Support the Noble Cause</h3>
+            <p className="mt-3 text-sm text-slate-300 leading-relaxed">
+              Your contribution will support the daily feeding, medical care, and maintenance of Gaushala cows. Choose a payment option to donate or consult with Acharya Ji on specific remedies.
+            </p>
+            <div className="mt-6 flex flex-col gap-3 sm:flex-row lg:flex-col xl:flex-row">
+              <button
+                type="button"
+                onClick={onDonate}
+                className="flex-1 rounded-full bg-amber-300 py-3.5 text-sm font-bold uppercase tracking-wider text-slate-950 transition hover:bg-amber-200"
+              >
+                Donate Now
+              </button>
+              <a
+                href="https://wa.me/917408179186?text=I%20want%20to%20know%20more%20about%20Gau%20Sewa%20donation%20and%20Chara%20remedies"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="flex-1 inline-flex items-center justify-center gap-2 rounded-full border border-white/20 py-3.5 text-sm font-bold uppercase tracking-wider text-white transition hover:border-amber-200"
+              >
+                <WhatsApp fontSize="small" /> Inquire on WhatsApp
+              </a>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </section>
+  );
+}
+
 function App() {
   const [bookingOpen, setBookingOpen] = useState(false);
+  const [donationOpen, setDonationOpen] = useState(false);
 
   return (
     <div className="min-h-screen overflow-x-hidden bg-slate-950 text-slate-100">
@@ -971,10 +1167,12 @@ function App() {
         <Services onBook={() => setBookingOpen(true)} />
         <Shop />
         <Testimonials />
+        <Donation onDonate={() => setDonationOpen(true)} />
         <Contact />
       </main>
       <Footer />
       <BookingModal open={bookingOpen} onClose={() => setBookingOpen(false)} />
+      <DonationModal open={donationOpen} onClose={() => setDonationOpen(false)} />
     </div>
   );
 }
